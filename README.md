@@ -20,3 +20,4 @@ Minimal Template to set up the folder structure for Liquibase to use on Windows 
   * This way the real procedure script can always use ALTER PROCEDURE
   * Another alternative is to use dynamic SQL inside the procedure-script to first check if the procedure exists and then create a dummy version.
   * It is prefered to use ALTER on subsequent modifications because then permissions will be preserved. (using DROP will remove all permissions set on the procedure/object)
+* You can use GO statements in your sql scripts when using endDelimiter="\nGO", but it("GO") will be case sensitive. Go go gO will cause syntax error.
