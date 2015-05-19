@@ -19,3 +19,4 @@ Minimal Template to set up the folder structure for Liquibase to use on Windows 
 * Because SQL Server does not support CREATE OR REPLACE I  have used a sql-tagg in the databaseChangelog-file to first create an empty stub of the procedure.
   * This way the real procedure script can always use ALTER PROCEDURE
   * Another alternative is to use dynamic SQL inside the procedure-script to first check if the procedure exists and then create a dummy version.
+  * It is prefered to use ALTER on subsequent modifications because then permissions will be preserved. (using DROP will remove all permissions set on the procedure/object)
