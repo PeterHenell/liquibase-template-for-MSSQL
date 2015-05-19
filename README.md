@@ -6,6 +6,7 @@ Minimal Template to set up the folder structure for Liquibase to use on Windows 
 * Inside the cloned directory, run the setup.bat file
 * A new folder called db_repository will be created with a complete setup of all folder structures needed for Liquibase to run.
 * Move the db_repository folder, or the contents of it, to your actual repository. 
+* Edit the Liquibase.properties file to point to your local dev environment and to include your credentials.
 * Start adding objects, the liquibase way!
 
 ## Included gotchas
