@@ -17,4 +17,11 @@
 	<!-- <changeSet id="Jira-02134" author="Pehe" runOnChange="true">
 		<sqlFile path="./DoStuff.sql" endDelimiter="\nGO" relativeToChangelogFile="true"  />	
 	</changeSet> -->
+	
+	<!-- <changeSet id="Jira-02134" author="PeHe">
+		<sqlFile path="./DoStuff.sql" endDelimiter="\nGO" relativeToChangelogFile="true"  />
+		<rollback>
+		  <sqlFile path="./DropDoStuff.sql" endDelimiter="\nGO" relativeToChangelogFile="true"  />
+		</rollback>
+	</changeSet> -->
 </databaseChangeLog>
