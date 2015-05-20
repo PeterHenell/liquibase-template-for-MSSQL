@@ -6,6 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
+	<!-- This is the preferred way  because it will retain full information of what script that was run in the DBCHANGELOG table -->
 	<!-- <include relativeToChangelogFile="true" file="myTable.sql" /> -->
 	
 	<!-- <changeSet author="Peter Henell" id="Jira-01234-setup">
