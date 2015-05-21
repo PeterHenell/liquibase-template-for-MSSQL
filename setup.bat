@@ -11,6 +11,8 @@ mkdir db_repository\deploy\sequences
 mkdir db_repository\deploy\triggers
 mkdir db_repository\deploy\types
 mkdir db_repository\deploy\procedures
+mkdir db_repository\deploy\schemas
+
 
 ECHO Creating xml structures
 copy template_files\submaster.xml db_repository\deploy\functions\master.xml
@@ -22,6 +24,7 @@ copy template_files\submaster.xml db_repository\deploy\sequences\master.xml
 copy template_files\submaster.xml db_repository\deploy\triggers\master.xml
 copy template_files\submaster.xml db_repository\deploy\types\master.xml
 copy template_files\submaster.xml db_repository\deploy\procedures\master.xml
+copy template_files\submaster.xml db_repository\deploy\schemas\master.xml
 copy template_files\deploymaster.xml db_repository\deploy\master.xml
 
 copy template_files\update.xml db_repository\
