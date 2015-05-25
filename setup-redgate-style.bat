@@ -77,6 +77,7 @@ copy template_files\submaster.xml "db_repository\Types\XML Schema Collections\ma
 copy template_files\submaster.xml db_repository\Views\master.xml
 
 copy template_files\Liquibase.properties.template db_repository\Liquibase.properties
+copy template_files\Liquibase.properties.template db_repository\Liquibase.properties.template
 copy template_files\run_liquibase.bat db_repository\
 
 ECHO Adding liquibase binaries
