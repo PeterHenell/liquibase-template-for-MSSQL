@@ -30,11 +30,12 @@ namespace RedgateToLiquibase
             string liquibaseRepoPath = @"C:\src\github\liquibase-template-for-MSSQL\db_repository";
 
             Handle(Path.Combine(redgateRepoPath, "Tables"), Path.Combine(liquibaseRepoPath, "Tables"));
+            Handle(Path.Combine(redgateRepoPath, "Assemblies"), Path.Combine(liquibaseRepoPath, "Assemblies"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Schemas"), Path.Combine(liquibaseRepoPath, "Security", "Schemas"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Users"), Path.Combine(liquibaseRepoPath, "Security", "Users"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Roles"), Path.Combine(liquibaseRepoPath, "Security", "Roles"));
             Handle(Path.Combine(redgateRepoPath, "Views"), Path.Combine(liquibaseRepoPath, "Views"), true);
-            Handle(Path.Combine(redgateRepoPath, "Stored Procedures"), Path.Combine(liquibaseRepoPath, "Stored Procedures"), true);
+            Handle(Path.Combine(redgateRepoPath, "Stored Procedures"), Path.Combine(liquibaseRepoPath, "Stored Procedures"), true, false);
             Handle(Path.Combine(redgateRepoPath, "Functions"), Path.Combine(liquibaseRepoPath, "Functions"), true);
             Handle(Path.Combine(redgateRepoPath, "Types", "User-defined Data Types"), Path.Combine(liquibaseRepoPath, "Types", "User-defined Data Types"));
 
@@ -42,7 +43,7 @@ namespace RedgateToLiquibase
             Handle(Path.Combine(redgateRepoPath, "Storage", "Partition Functions"), Path.Combine(liquibaseRepoPath, "Storage", "Partition Functions"), true);
         }
 
-        private void Handle(string redgateObjectPath, string liquibaseObjectPath, bool runOnChanges = false)
+        private void Handle(string redgateObjectPath, string liquibaseObjectPath, bool runOnChanges = false, bool addChangeSetForEachDDL = true )
         {
             var objects = new List<FileInfo>();
 
@@ -51,7 +52,7 @@ namespace RedgateToLiquibase
                 FileInfo fi = new FileInfo(file);
                 objects.Add(fi);
                 var targetPath = Path.Combine(liquibaseObjectPath, fi.Name);
-                CreateLiquifiedFile(fi, targetPath, runOnChanges);
+                CreateLiquifiedFile(fi, targetPath, runOnChanges, addChangeSetForEachDDL);
 
                 Console.WriteLine(fi.Name);
             }
@@ -90,7 +91,7 @@ namespace RedgateToLiquibase
             File.WriteAllText(targetFilePath, string.Format(masterContentTemplate, sb.ToString()));
         }
 
-        private void CreateLiquifiedFile(FileInfo fi, string targetPath, bool runOnChanges)
+        private void CreateLiquifiedFile(FileInfo fi, string targetPath, bool runOnChanges, bool addChangeSetForEachDDL)
         {
             using (var writer = new StreamWriter(targetPath))
             using (var reader = new StreamReader(fi.FullName))
@@ -104,14 +105,14 @@ namespace RedgateToLiquibase
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if (line.Trim().Equals("GO"))
+                    if (line.Trim().ToUpper().Equals("GO"))
                     {
                         // sometimes the GO statement is not at the begining of the line
                         line = "GO";
                     }
                     if (line.StartsWith("CREATE") || line.StartsWith("ALTER") || line.StartsWith("DROP"))
                     {
-                        if (!firstDDL)
+                        if (!firstDDL && addChangeSetForEachDDL)
                         {
                             writer.WriteLine(GetChangeSetComment(fi, runOnChanges));    
                         }
