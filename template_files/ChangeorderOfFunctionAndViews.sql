@@ -12,8 +12,8 @@ declare   @PARAM_OBJECT_NAME VARCHAR(500) = '';
         c.name AS DependentObjectName , c.type AS DependenObjectType
         FROM  sys.objects b
         LEFT OUTER JOIN sys.sysdepends a ON a.id = b.object_id 
-        left outer JOIN sys.objects c ON a.depid = c.object_id AND c.type IN ('FN') -- , 'V
-		where b.type IN ('FN')
+        left outer JOIN sys.objects c ON a.depid = c.object_id AND c.type IN ('V') -- , USE 'V' for views, 'FN' for functions, 'P' for procedures etc
+		where b.type IN ('V')
         
     ),
     CTE_DependentObjects2 AS
