@@ -51,7 +51,6 @@ copy template_files\submaster.xml "db_repository\Extended Properties\master.xml"
 copy template_files\submaster.xml db_repository\Functions\master.xml
 copy template_files\submaster.xml db_repository\Rules\master.xml
 copy template_files\submaster.xml "db_repository\Search property Lists\master.xml"
-copy template_files\submaster.xml db_repository\Security\master.xml
 copy template_files\submaster.xml "db_repository\Security\Asymetric Keys\master.xml"
 copy template_files\submaster.xml "db_repository\Security\Certificates\master.xml
 copy template_files\submaster.xml "db_repository\Security\Roles\master.xml
@@ -66,7 +65,6 @@ copy template_files\submaster.xml "db_repository\Service Broker\Queues\master.xm
 copy template_files\submaster.xml "db_repository\Service Broker\Remote Service Bindings\master.xml"
 copy template_files\submaster.xml "db_repository\Service Broker\Routes\master.xml"
 copy template_files\submaster.xml "db_repository\Service Broker\Services\master.xml"
-copy template_files\submaster.xml db_repository\Storage\master.xml
 copy template_files\submaster.xml "db_repository\Storage\Full Text Catalogs\master.xml"
 copy template_files\submaster.xml "db_repository\Storage\Full Text Stoplists\master.xml"
 copy template_files\submaster.xml "db_repository\Storage\Partition Functions\master.xml"
@@ -74,7 +72,6 @@ copy template_files\submaster.xml "db_repository\Storage\Partition Schemes\maste
 copy template_files\submaster.xml "db_repository\Stored Procedures\master.xml"
 copy template_files\submaster.xml db_repository\Synonyms\master.xml
 copy template_files\submaster.xml db_repository\Tables\master.xml
-copy template_files\submaster.xml db_repository\Types\master.xml
 copy template_files\submaster.xml "db_repository\Types\User-defined Data Types\master.xml"
 copy template_files\submaster.xml "db_repository\Types\XML Schema Collections\master.xml"
 copy template_files\submaster.xml db_repository\Views\master.xml
