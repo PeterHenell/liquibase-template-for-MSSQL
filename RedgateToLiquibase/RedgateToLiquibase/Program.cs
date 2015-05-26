@@ -31,16 +31,40 @@ namespace RedgateToLiquibase
 
             Handle(Path.Combine(redgateRepoPath, "Tables"), Path.Combine(liquibaseRepoPath, "Tables"));
             Handle(Path.Combine(redgateRepoPath, "Assemblies"), Path.Combine(liquibaseRepoPath, "Assemblies"));
+            
             Handle(Path.Combine(redgateRepoPath, "Security", "Schemas"), Path.Combine(liquibaseRepoPath, "Security", "Schemas"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Users"), Path.Combine(liquibaseRepoPath, "Security", "Users"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Roles"), Path.Combine(liquibaseRepoPath, "Security", "Roles"));
+            Handle(Path.Combine(redgateRepoPath, "Security", "Asymmetric Keys"), Path.Combine(liquibaseRepoPath, "Security", "Asymmetric Keys"));
+            Handle(Path.Combine(redgateRepoPath, "Security", "Certificates"), Path.Combine(liquibaseRepoPath, "Security", "Certificates"));
+            Handle(Path.Combine(redgateRepoPath, "Security", "Symmetric Keys"), Path.Combine(liquibaseRepoPath, "Security", "Symmetric Keys"));
+            
             Handle(Path.Combine(redgateRepoPath, "Views"), Path.Combine(liquibaseRepoPath, "Views"), true);
             Handle(Path.Combine(redgateRepoPath, "Stored Procedures"), Path.Combine(liquibaseRepoPath, "Stored Procedures"), true, false);
             Handle(Path.Combine(redgateRepoPath, "Functions"), Path.Combine(liquibaseRepoPath, "Functions"), true);
             Handle(Path.Combine(redgateRepoPath, "Types", "User-defined Data Types"), Path.Combine(liquibaseRepoPath, "Types", "User-defined Data Types"));
+            Handle(Path.Combine(redgateRepoPath, "Types", "XML Schema Collections"), Path.Combine(liquibaseRepoPath, "Types", "XML Schema Collections"));
 
             Handle(Path.Combine(redgateRepoPath, "Storage", "Partition Schemes"), Path.Combine(liquibaseRepoPath, "Storage", "Partition Schemes"), true);
             Handle(Path.Combine(redgateRepoPath, "Storage", "Partition Functions"), Path.Combine(liquibaseRepoPath, "Storage", "Partition Functions"), true);
+
+            Handle(Path.Combine(redgateRepoPath, "Data"), Path.Combine(liquibaseRepoPath, "Data"));
+            Handle(Path.Combine(redgateRepoPath, "Database Triggers"), Path.Combine(liquibaseRepoPath, "Database Triggers"));
+
+            Handle(Path.Combine(redgateRepoPath, "Defaults"), Path.Combine(liquibaseRepoPath, "Defaults"));
+            Handle(Path.Combine(redgateRepoPath, "Extended Properties"), Path.Combine(liquibaseRepoPath, "Extended Properties"));
+            Handle(Path.Combine(redgateRepoPath, "Rules"), Path.Combine(liquibaseRepoPath, "Rules"));
+            Handle(Path.Combine(redgateRepoPath, "Search property Lists"), Path.Combine(liquibaseRepoPath, "Search property Lists"));
+            Handle(Path.Combine(redgateRepoPath, "Sequences"), Path.Combine(liquibaseRepoPath, "Sequences"));
+            Handle(Path.Combine(redgateRepoPath, "Synonyms"), Path.Combine(liquibaseRepoPath, "Synonyms"));
+
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Contracts"), Path.Combine(liquibaseRepoPath, "Service Broker", "Contracts"));
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Event Notifications"), Path.Combine(liquibaseRepoPath, "Service Broker", "Event Notifications"));
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Message Types"), Path.Combine(liquibaseRepoPath, "Service Broker", "Message Types"));
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Queues"), Path.Combine(liquibaseRepoPath, "Service Broker", "Queues"));
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Remote Service Bindings"), Path.Combine(liquibaseRepoPath, "Service Broker", "Remote Service Bindings"));
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Routes"), Path.Combine(liquibaseRepoPath, "Service Broker", "Routes"));
+            Handle(Path.Combine(redgateRepoPath, "Service Broker", "Services"), Path.Combine(liquibaseRepoPath, "Service Broker", "Services"));
         }
 
         private void Handle(string redgateObjectPath, string liquibaseObjectPath, bool runOnChanges = false, bool addChangeSetForEachDDL = true )

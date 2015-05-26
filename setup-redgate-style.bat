@@ -11,15 +11,15 @@ mkdir db_repository\Functions
 mkdir db_repository\Rules
 mkdir "db_repository\Search property Lists"
 mkdir db_repository\Security
-mkdir "db_repository\Security\Asymetric Keys"
+mkdir "db_repository\Security\Asymmetric Keys"
 mkdir db_repository\Security\Certificates
 mkdir db_repository\Security\Roles
 mkdir db_repository\Security\Schemas
-mkdir "db_repository\Security\Symetric Keys"
+mkdir "db_repository\Security\Symmetric Keys"
 mkdir db_repository\Security\Users
 mkdir db_repository\Sequences
 mkdir "db_repository\Service Broker\Contracts"
-mkdir "db_repository\Service Broker\Event Notificatoins"
+mkdir "db_repository\Service Broker\Event Notifications"
 mkdir "db_repository\Service Broker\Message Types"
 mkdir "db_repository\Service Broker\Queues"
 mkdir "db_repository\Service Broker\Remote Service Bindings"
@@ -51,15 +51,15 @@ copy template_files\submaster.xml "db_repository\Extended Properties\master.xml"
 copy template_files\submaster.xml db_repository\Functions\master.xml
 copy template_files\submaster.xml db_repository\Rules\master.xml
 copy template_files\submaster.xml "db_repository\Search property Lists\master.xml"
-copy template_files\submaster.xml "db_repository\Security\Asymetric Keys\master.xml"
+copy template_files\submaster.xml "db_repository\Security\Asymmetric Keys\master.xml"
 copy template_files\submaster.xml "db_repository\Security\Certificates\master.xml
 copy template_files\submaster.xml "db_repository\Security\Roles\master.xml
 copy template_files\submaster.xml db_repository\Security\Schemas\master.xml
-copy template_files\submaster.xml "db_repository\Security\Symetric Keys\master.xml"
+copy template_files\submaster.xml "db_repository\Security\Symmetric Keys\master.xml"
 copy template_files\submaster.xml db_repository\Security\Users\master.xml
 copy template_files\submaster.xml db_repository\Sequences\master.xml
 copy template_files\submaster.xml "db_repository\Service Broker\Contracts\master.xml"
-copy template_files\submaster.xml "db_repository\Service Broker\Event Notificatoins\master.xml"
+copy template_files\submaster.xml "db_repository\Service Broker\Event Notifications\master.xml"
 copy template_files\submaster.xml "db_repository\Service Broker\Message Types\master.xml"
 copy template_files\submaster.xml "db_repository\Service Broker\Queues\master.xml"
 copy template_files\submaster.xml "db_repository\Service Broker\Remote Service Bindings\master.xml"
