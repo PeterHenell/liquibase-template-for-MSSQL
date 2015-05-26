@@ -26,7 +26,7 @@ namespace RedgateToLiquibase
 
         private void Run()
         {
-            string redgateRepoPath = @"C:\src\Workspaces\DataWarehouse\DWH_All\Dev\Rel_002_Trinity\Databases\DWH_PRES_DB";
+            string redgateRepoPath = @"C:\src\Workspaces\";
             string liquibaseRepoPath = @"C:\src\github\liquibase-template-for-MSSQL\db_repository";
 
             Handle(Path.Combine(redgateRepoPath, "Tables"), Path.Combine(liquibaseRepoPath, "Tables"));

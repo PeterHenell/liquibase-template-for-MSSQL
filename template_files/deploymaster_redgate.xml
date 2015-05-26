@@ -17,9 +17,9 @@
   <include file="Security/Users/master.xml" />
   <include file="Security/Roles/master.xml" />
   <include file="Security/Schemas/master.xml" />
-  <include file="Security/Asymetric Keys/master.xml" />
+  <include file="Security/Asymmetric Keys/master.xml" />
   <include file="Security/Certificates/master.xml" />
-  <include file="Security/Symetric Keys/master.xml" />
+  <include file="Security/Symmetric Keys/master.xml" />
   
   <include file="Tables/master.xml" />
   <include file="Views/master.xml" />
@@ -35,7 +35,7 @@
   <include file="Sequences/master.xml" />
   
   <include file="Service Broker/Contracts/master.xml" />
-  <include file="Service Broker/Event Notificatoins/master.xml" />
+  <include file="Service Broker/Event Notifications/master.xml" />
   <include file="Service Broker/Message Types/master.xml" />
   <include file="Service Broker/Queues/master.xml" />
   <include file="Service Broker/Remote Service Bindings/master.xml" />
