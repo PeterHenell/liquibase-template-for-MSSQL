@@ -5,7 +5,7 @@ echo %db_repository%
 
 
 ECHO Creating Directories
-mkdir db_repository
+mkdir %db_repository%
 mkdir %db_repository%\Assemblies
 mkdir %db_repository%\Data
 mkdir "%db_repository%\Database Triggers"
@@ -88,7 +88,7 @@ copy template_files\pom.xml %db_repository%\
 (echo #Liquibase.properties 
 echo driver: com.microsoft.sqlserver.jdbc.SQLServerDriver 
 echo classpath: .\\liquibase-app\\lib\\sqljdbc41.jar 
-echo url: jdbc:sqlserver://LOCALHOST:1433;databaseName=%db_repository%; 
+echo url: jdbc:sqlserver://LOCALHOST\peheintegration:1433;databaseName=%db_repository%; 
 echo username: sa 
 echo password: hemligt) > %db_repository%\Liquibase.properties
 
