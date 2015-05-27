@@ -97,7 +97,7 @@ ECHO Adding liquibase binaries
 robocopy template_files\liquibase-app %db_repository%\liquibase-app  /E
 
 ECHO Setting permissions
-CACLS %db_repository% /e /p %USERNAME%:F
+ICACLS %db_repository% /grant %USERNAME%:F
 
 ECHO Your Repository is now setup in the %db_repository% folder
 ECHO Edit the Liquibase.properties files to configure it to a specific server/dbName
