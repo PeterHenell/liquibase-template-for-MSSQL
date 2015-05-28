@@ -22,3 +22,5 @@ Minimal Template to set up the folder structure for Liquibase to use on Windows 
   * It is prefered to use ALTER on subsequent modifications because then permissions will be preserved. (using DROP will remove all permissions set on the procedure/object)
 * You can use GO statements in your sql scripts when using endDelimiter="\nGO", but it("GO") will be case sensitive. Go go gO will cause syntax error.
 * --liquibase formatted sql tagg is very sensitive and must have no space and have correct case.
+* Be careful of having GO statements in comments, as the liquibase parser wil not understand that it is inside a comment.
+* The liquibase parser will split the file into batches based on the regexp \nGO. This mean that if GOTO is on a new line your deployment will probably fail or worse...
