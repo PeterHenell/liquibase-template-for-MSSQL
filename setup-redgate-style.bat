@@ -34,6 +34,8 @@ mkdir "%db_repository%\Storage\Full Text Catalogs"
 mkdir "%db_repository%\Storage\Full Text Stoplists"
 mkdir "%db_repository%\Storage\Partition Functions"
 mkdir "%db_repository%\Storage\Partition Schemes"
+mkdir "%db_repository%\Storage\File Groups"
+
 mkdir "%db_repository%\Stored Procedures"
 mkdir %db_repository%\Synonyms
 mkdir %db_repository%\Tables
@@ -41,6 +43,7 @@ mkdir %db_repository%\Types
 mkdir "%db_repository%\Types\User-defined Data Types"
 mkdir "%db_repository%\Types\XML Schema Collections"
 mkdir %db_repository%\Views
+
 
 mkdir %db_repository%\log
 
@@ -84,6 +87,7 @@ rem copy template_files\Liquibase.properties.template %db_repository%\Liquibase.
 copy template_files\Liquibase.properties.template %db_repository%\Liquibase.properties.template
 copy template_files\run_liquibase.bat %db_repository%\
 copy template_files\pom.xml %db_repository%\
+copy template_files\assembly.xml %db_repository%\
 
 (echo #Liquibase.properties 
 echo driver: com.microsoft.sqlserver.jdbc.SQLServerDriver 
