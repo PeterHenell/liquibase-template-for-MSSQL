@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("RedgateToLiquibase")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("AB Svensk Exportkredit")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("RedgateToLiquibase")]
-[assembly: AssemblyCopyright("Copyright © AB Svensk Exportkredit 2015")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
