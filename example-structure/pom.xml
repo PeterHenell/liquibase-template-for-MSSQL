@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.peter.henell.liquibase</groupId>
+  <artifactId>playground</artifactId>
+  <version>1.0.0-snapshot</version>
+
+  <properties>
+
+  </properties>
+  
+  <dependencies>
+    <dependency>
+       <groupId>com.microsoft.sqlserver</groupId>
+       <artifactId>sqljdbc4</artifactId>
+       <version>4.1</version>
+       <scope>system</scope>
+       <systemPath>${project.basedir}/liquibase-app/lib/sqljdbc41.jar</systemPath>
+    </dependency>
+  </dependencies>
+
+  
+  <build>
+    <pluginManagement>
+      <plugins>
+	<plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-assembly-plugin</artifactId>
+	  <version>2.4</version>
+	  <configuration>
+            <descriptors>
+              <descriptor>${project.basedir}/assembly.xml</descriptor>
+            </descriptors>
+	  </configuration>
+	  <executions>
+            <execution>
+              <id>make-assembly</id> <!-- this is used for inheritance merges -->
+              <phase>package</phase> <!-- append to the packaging phase. -->
+              <goals>
+		<goal>single</goal> <!-- goals == mojos -->
+              </goals>
+            </execution>
+	  </executions>
+	</plugin>
+      </plugins>
+    </pluginManagement>
+    
+
+
+    <plugins>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-assembly-plugin</artifactId>
+      </plugin>
+      
+      <plugin>
+	<groupId>org.liquibase</groupId>
+	<artifactId>liquibase-maven-plugin</artifactId>
+	<version>3.3.3</version>
+	<configuration>
+          <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+          <changeLogFile>${project.basedir}/update.xml</changeLogFile>
+	  <propertyFile>${project.basedir}/Liquibase.properties</propertyFile>
+	  <liquibaseShouldRun>true</liquibaseShouldRun>
+	  <logLevel>info</logLevel>
+        </configuration>
+	<executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>update</goal>
+            </goals>
+          </execution>
+	</executions>
+
+	<dependencies>
+	  <dependency>
+	    <groupId>com.microsoft.sqlserver</groupId>
+	    <artifactId>sqljdbc4</artifactId>
+	    <version>4.1</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/liquibase-app/lib/sqljdbc41.jar</systemPath>
+	  </dependency>
+	</dependencies>
+  
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>

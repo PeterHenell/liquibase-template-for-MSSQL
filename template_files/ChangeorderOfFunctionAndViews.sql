@@ -1,5 +1,4 @@
   -- Supports Stored Proc, View, User Function, User Table
-declare   @PARAM_OBJECT_NAME VARCHAR(500) = '';
 
     WITH CTE_DependentObjects AS
     (
@@ -12,9 +11,10 @@ declare   @PARAM_OBJECT_NAME VARCHAR(500) = '';
         c.name AS DependentObjectName , c.type AS DependenObjectType
         FROM  sys.objects b
         LEFT OUTER JOIN sys.sysdepends a ON a.id = b.object_id 
-        left outer JOIN sys.objects c ON a.depid = c.object_id AND c.type IN ('V') -- , USE 'V' for views, 'FN' for functions, 'P' for procedures etc
-		where b.type IN ('V')
-        
+        left outer JOIN sys.objects c ON a.depid = c.object_id AND c.type IN ('fn', 'if', 'tf') -- , USE 'V' for views, ('fn', 'if', 'tf') for functions, 'P' for procedures etc
+		where b.type IN ('fn', 'if', 'tf')
+		AND SCHEMA_NAME(b.schema_id) = 'tSQLt'
+      
     ),
     CTE_DependentObjects2 AS
     (

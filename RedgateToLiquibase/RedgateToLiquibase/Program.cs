@@ -15,30 +15,42 @@ namespace RedgateToLiquibase
         static void Main(string[] args)
         {
             var p = new Program();
-            p.Run();
+            string[] databases = new string[] {  "DWH_TEMP"		
+                                                ,"DWH_JOURNAL"	
+                                                ,"DWH_TOOLKIT"	
+                                                ,"DWH_MANUAL"	
+                                                ,"DWH_APP"		
+                                                ,"DWH_HISTORY"	
+                                                ,"DWH_BASE"		
+                                               // ,"DWH_PRES"		
+                                               // ,"DWH_UNIT_TEST"	
+                                                };
+
+            foreach (var db in databases)
+                p.Run(db);
         }
 
         public Program()
         {
             Uniquifier = 0;
-            OverwriteExistingMasterFiles = false;
+            OverwriteExistingMasterFiles = true;
         }
 
-        private void Run()
+        private void Run(string dbName)
         {
-            string redgateRepoPath = @"C:\src\Workspaces\";
-            string liquibaseRepoPath = @"C:\src\github\liquibase-template-for-MSSQL\db_repository";
+            string redgateRepoPath = Path.Combine(@"C:\src\Workspaces\DataWarehouse\DWH_All\Dev\Rel_004_Morpheus\Databases", dbName + "_DB");
+            string liquibaseRepoPath = Path.Combine(@"C:\src\liquibased_databases", dbName);
 
             Handle(Path.Combine(redgateRepoPath, "Tables"), Path.Combine(liquibaseRepoPath, "Tables"));
             Handle(Path.Combine(redgateRepoPath, "Assemblies"), Path.Combine(liquibaseRepoPath, "Assemblies"));
-            
+
             Handle(Path.Combine(redgateRepoPath, "Security", "Schemas"), Path.Combine(liquibaseRepoPath, "Security", "Schemas"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Users"), Path.Combine(liquibaseRepoPath, "Security", "Users"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Roles"), Path.Combine(liquibaseRepoPath, "Security", "Roles"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Asymmetric Keys"), Path.Combine(liquibaseRepoPath, "Security", "Asymmetric Keys"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Certificates"), Path.Combine(liquibaseRepoPath, "Security", "Certificates"));
             Handle(Path.Combine(redgateRepoPath, "Security", "Symmetric Keys"), Path.Combine(liquibaseRepoPath, "Security", "Symmetric Keys"));
-            
+
             Handle(Path.Combine(redgateRepoPath, "Views"), Path.Combine(liquibaseRepoPath, "Views"), true);
             Handle(Path.Combine(redgateRepoPath, "Stored Procedures"), Path.Combine(liquibaseRepoPath, "Stored Procedures"), true, false);
             Handle(Path.Combine(redgateRepoPath, "Functions"), Path.Combine(liquibaseRepoPath, "Functions"), true);
@@ -67,7 +79,7 @@ namespace RedgateToLiquibase
             Handle(Path.Combine(redgateRepoPath, "Service Broker", "Services"), Path.Combine(liquibaseRepoPath, "Service Broker", "Services"));
         }
 
-        private void Handle(string redgateObjectPath, string liquibaseObjectPath, bool runOnChanges = false, bool addChangeSetForEachDDL = true )
+        private void Handle(string redgateObjectPath, string liquibaseObjectPath, bool runOnChanges = false, bool addChangeSetForEachDDL = true)
         {
             var objects = new List<FileInfo>();
 
@@ -120,12 +132,12 @@ namespace RedgateToLiquibase
             using (var writer = new StreamWriter(targetPath))
             using (var reader = new StreamReader(fi.FullName))
             {
-                
+
                 bool firstDDL = true;
-                
+
                 writer.WriteLine(string.Format(@"--liquibase formatted sql"));
                 writer.WriteLine(GetChangeSetComment(fi, runOnChanges));
-                
+
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
@@ -138,7 +150,7 @@ namespace RedgateToLiquibase
                     {
                         if (!firstDDL && addChangeSetForEachDDL)
                         {
-                            writer.WriteLine(GetChangeSetComment(fi, runOnChanges));    
+                            writer.WriteLine(GetChangeSetComment(fi, runOnChanges));
                         }
 
                         firstDDL = false;
@@ -152,7 +164,7 @@ namespace RedgateToLiquibase
         {
             return string.Format(@"
 --changeSet {0}:Initial-{1}-{2} endDelimiter:\nGO splitStatements:true stripComments:false runOnChange:{3}", "PeHe",
-                                            fi.Name.Replace(".sql", "").Replace(".", "-"),
+                                            fi.Name.Replace(" ", "").Replace(".sql", "").Replace(".", "-"),
                                             Uniquifier++,
                                             runOnChanges);
         }
